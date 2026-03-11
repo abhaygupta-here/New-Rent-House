@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Search, MapPin, Building } from 'lucide-react';
 
@@ -43,13 +44,14 @@ const Home = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
+              style={{ display: 'flex', gap: '1rem' }}
             >
-              <button className="btn btn-primary gap-2" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
+              <Link to="/properties" className="btn btn-primary gap-2" style={{ fontSize: '1.1rem', padding: '1rem 2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Search size={20} /> Browse Properties
-              </button>
-              <button className="btn btn-outline gap-2" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
+              </Link>
+              <a href="#features" className="btn btn-outline gap-2" style={{ fontSize: '1.1rem', padding: '1rem 2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 Learn More <ArrowRight size={20} />
-              </button>
+              </a>
             </motion.div>
           </div>
           
@@ -75,7 +77,7 @@ const Home = () => {
       </section>
 
       {/* Featured Features Section */}
-      <section className="container py-24" style={{ padding: '6rem 1.5rem' }}>
+      <section id="features" className="container py-24" style={{ padding: '6rem 1.5rem' }}>
         <h2 className="text-center" style={{ fontSize: '2.5rem', marginBottom: '4rem' }}>Why Choose CasaZen</h2>
         <div className="grid grid-cols-3">
           {[
