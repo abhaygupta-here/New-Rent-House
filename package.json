@@ -1,0 +1,12 @@
+{
+  "name": "casazen-root",
+  "version": "1.0.0",
+  "description": "Root deployment orchestrated context for CasaZen MERN Stack Render",
+  "scripts": {
+    "install-server": "npm --prefix backend install",
+    "install-client": "npm --prefix frontend install",
+    "build-client": "npm --prefix frontend run build",
+    "build": "npm run install-server && npm run install-client && npm run build-client",
+    "start": "npm --prefix backend start"
+  }
+}

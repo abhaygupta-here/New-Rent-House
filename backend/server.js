@@ -4,6 +4,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
+import path from 'path';
 
 import authRoutes from './routes/auth.js';
 import propertyRoutes from './routes/properties.js';
@@ -37,6 +38,20 @@ io.on('connection', (socket) => {
 });
 
 app.set('io', io); // so we can access it from controllers
+
+// Serve frontend static files in production
+const __dirname = path.resolve();
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend', 'dist', 'index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running...');
+  });
+}
 
 // Database Connection
 const PORT = process.env.PORT || 5000;

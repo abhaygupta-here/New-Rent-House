@@ -63,7 +63,7 @@ const Properties = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/properties');
+        const res = await fetch('/api/properties');
         const data = await res.json();
         setProperties(data);
       } catch (error) {
